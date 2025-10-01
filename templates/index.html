@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Glean AI Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    <link rel="manifest" href="/static/site.webmanifest">
+</head>
+<body>
+    <div class="container">
+        <!-- Left panel: Model selection -->
+        <div class="sidebar">
+            <h2>Select Model</h2>
+            <form id="model-form" method="post" action="/ask">
+                <select name="model" id="model">
+                    <option value="flan-t5-base">Flan-T5 Base</option>
+                    <option value="flan-t5-small">Flan-T5 Small</option>
+                    <option value="flan-t5-large">Flan-T5 Large</option>
+                    <option value="opt-350m">OPT-350M</option>
+                    <option value="distilgpt2">DistilGPT2</option>
+                </select>
+            </form>
+        </div>
+         <!-- Upload document -->
+       
+
+        <!-- Right panel: Question input and answer -->
+        <div class="main">
+            <h1>Glean AI Assistant</h1>
+            <form action="/ask" method="post">
+                <input type="text" name="query" placeholder="Ask a question..." size="50" required>
+                <input type="hidden" name="model" id="selected-model">
+                <button type="submit">Ask</button>
+            </form>
+
+            {% if query %}
+                <div class="qa-section">
+                    <h2>Question:</h2>
+                    <p>{{ query }}</p>
+                    <h2>Answer:</h2>
+                    <p>{{ answer }}</p>
+                    <h3>Model Used:</h3>
+                    <p>{{ model }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        // Pass selected model from sidebar to hidden input
+        const modelSelect = document.getElementById("model");
+        const hiddenModelInput = document.getElementById("selected-model");
+        modelSelect.addEventListener("change", () => {
+            hiddenModelInput.value = modelSelect.value;
+        });
+        // Set default initially
+        hiddenModelInput.value = modelSelect.value;
+    </script>
+</body>
+</html>

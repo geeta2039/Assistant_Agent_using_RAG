@@ -1,0 +1,161 @@
+/* Background + theme */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #000000, #1a1a1a, #ffcc00);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 30px;
+}
+
+/* Main container */
+.container {
+    display: flex;
+    width: 80%;
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid #ffcc00;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0px 0px 25px #ffcc00;
+    gap: 20px;
+}
+
+/* Sidebar (model selection + upload) */
+.sidebar {
+    width: 220px;
+    background: rgba(0, 0, 0, 0.65);
+    border-right: 2px solid #ffcc00;
+    padding: 20px;
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.sidebar select, .sidebar input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid #ffcc00;
+    background: #111;
+    color: white;
+    cursor: pointer;
+}
+
+.sidebar input[type="file"]::file-selector-button {
+    background: #ffcc00;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.sidebar input[type="file"]::file-selector-button:hover {
+    background: black;
+    color: #ffcc00;
+    border: 2px solid #ffcc00;
+}
+
+/* Main content (Q&A) */
+.main {
+    flex: 1;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Heading with dots inside */
+.heading {
+    text-align: center;
+    font-size: 2.5em;
+    color: white;
+    background: radial-gradient(black 2px, transparent 2px) repeat;
+    background-size: 10px 10px;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+
+
+input[type="text"], select {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ffcc00;
+    border-radius: 8px;
+    background: #111;
+    color: white;
+}
+
+button {
+    background: #ffcc00;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: black;
+    color: #ffcc00;
+    border: 2px solid #ffcc00;
+}
+
+/* Response box */
+.response-box {
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 5px solid #ffcc00;
+    margin-top: 15px;
+    word-wrap: break-word;
+    line-height: 1.5;
+}
+
+/* Uploaded documents list */
+.uploaded-files {
+    background: #111;
+    border: 1px dashed #ffcc00;
+    padding: 10px;
+    border-radius: 8px;
+    color: #ffcc00;
+    font-size: 0.9em;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+/* Optional: responsive for small screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #ffcc00;
+        border-radius: 10px 10px 0 0;
+        margin-bottom: 15px;
+    }
+}
